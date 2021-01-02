@@ -5,17 +5,12 @@
 
 import threading, time, random, sys, urllib2, httplib, base64
 from copy import copy
-
-def title():
-	print "\n\t   d3hydr8[at]gmail[dot]com cPanel BruteForcer v1.0"
-	print "\t-----------------------------------------------------\n"
 	
 def timer():
 	now = time.localtime(time.time())
 	return time.asctime(now)
 	
 if len(sys.argv) !=5:
-	title()
 	print "\nUsage: ./cPanelbrute.py <server> <port> <userlist> <wordlist>\n"
 	print "ex: python cPanelbrute.py example.com 2082 users.txt wordlist.txt\n"
 	sys.exit(1)
@@ -97,7 +92,6 @@ class Worker(threading.Thread):
 			#print "An error occurred:", msg
 			pass
 		
-title()
 if sys.argv[1][-1] == "/":
 	sys.argv[1] = sys.argv[1][:-1] 
 server = sys.argv[1]+":2082"
