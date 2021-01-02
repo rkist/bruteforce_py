@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "${file}",
             "args": [
-                "http://grandesantarosanoticias.com", "2082", "users/users.txt", "words/Top12Thousand-probable-v2.txt"
+                "http://www.grandesantarosanoticias.com:2082/login/", "users/users.txt", "words/Top12Thousand-probable-v2.txt"
             ],
             "console": "integratedTerminal"
         }

